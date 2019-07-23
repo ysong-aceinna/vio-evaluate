@@ -23,6 +23,8 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
     d_x = d_y = d_z = 0
     d_yaw = d_pitch = d_roll = 0
     b_align = False
+    first_timestamp = 0
+    timestamp = 0
 
     with open(ground_truth_file,'r') as csv_file:
         ground_truth_reader = csv.reader(csv_file)
@@ -78,6 +80,7 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
 
                         if not b_align:
                             b_align = True
+                            first_timestamp = timestamp
                             d_x = gt_x - algo_x
                             d_y = gt_y - algo_y
                             d_z = gt_z - algo_z
@@ -99,6 +102,10 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         output_file.write(str)
                         break
     output_file.close()
+    first_timestamp = float(first_timestamp)
+    timestamp = float(timestamp)
+    print("time length:{0:0.3f}s".format((timestamp - first_timestamp)/1000))
+
 
 def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file):
     # output_align_file = 'align.csv'
@@ -118,6 +125,8 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file)
     b_align = False
     ground_truth_row_count = 0
     loop_file_row_count = 0
+    first_timestamp = 0
+    timestamp = 0
 
     #get row count of ground-truth file.
     with open(ground_truth_file,'r') as csv_file:
@@ -184,6 +193,7 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file)
 
                     if not b_align:
                         b_align = True
+                        first_timestamp = timestamp
                         d_x = gt_x - algo_x
                         d_y = gt_y - algo_y
                         d_z = gt_z - algo_z
@@ -203,9 +213,13 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file)
                         algo_x, algo_y, algo_z, algo_roll, algo_pitch, algo_yaw,\
                         align_x, align_y, align_z, align_roll, align_pitch, align_yaw)
                     output_file.write(str)
+                    output_file.flush()
                     break
     output_file.close()
-    pass
+
+    first_timestamp = float(first_timestamp)
+    timestamp = float(timestamp)
+    print("time length:{0:0.3f}s".format((timestamp - first_timestamp)/1000))
 
 def eval_rmse(align_file):
     gt_x_list = []
@@ -255,12 +269,25 @@ def eval_rmse(align_file):
     align_pitch_list = np.array(align_pitch_list)
     align_yaw_list = np.array(align_yaw_list)
 
-    print(cal_rmse(gt_x_list, align_x_list))
-    print(cal_rmse(gt_y_list, align_y_list))
-    print(cal_rmse(gt_z_list, align_z_list))
-    print(cal_rmse(gt_roll_list, align_roll_list))
-    print(cal_rmse(gt_pitch_list, align_pitch_list))
-    print(cal_rmse(gt_yaw_list, align_yaw_list))
+    rmse_x = cal_rmse(gt_x_list, align_x_list)
+    rmse_y = cal_rmse(gt_y_list, align_y_list)
+    rmse_z = cal_rmse(gt_z_list, align_z_list)
+    rmse_roll = cal_rmse(gt_roll_list, align_roll_list)
+    rmse_pitch = cal_rmse(gt_pitch_list, align_pitch_list)
+    rmse_yaw = cal_rmse(gt_yaw_list, align_yaw_list)
+
+    rmse_pose = math.sqrt(rmse_x*rmse_x + rmse_y*rmse_y + rmse_z*rmse_z)
+    rmse_attitude = math.sqrt(rmse_roll*rmse_roll + rmse_pitch*rmse_pitch + rmse_yaw*rmse_yaw)
+
+    print("rmse_pose_x:{0}".format(rmse_x))
+    print("rmse_pose_y:{0}".format(rmse_y))
+    print("rmse_pose_z:{0}".format(rmse_z))
+    print("rmse_pose:{0}".format(rmse_pose))
+
+    print("rmse_roll:{0}".format(rmse_roll))
+    print("rmse_pitch:{0}".format(rmse_pitch))
+    print("rmse_yaw:{0}".format(rmse_yaw))
+    print("rmse_attitude:{0}".format(rmse_attitude))
 
 def cal_rmse(x, y):
     if x.size != y.size:
@@ -331,7 +358,7 @@ def main(argv):
         if 0 == len(opts):
             show_help_info()    
             sys.exit(0)
-            
+
         for opt, arg in opts:
             if opt in ("-h",):
                 show_help_info()
@@ -347,11 +374,11 @@ def main(argv):
                 ground_truth_file = args[0]
                 algo_result_file = args[1]
                 save_aligned_data_loop(output_align_file, ground_truth_file, algo_result_file)
-                break
+                break 
             elif opt in ("-r",):
                 align_file = arg
                 eval_rmse(align_file)
-                break
+                break  
             else:
                 show_help_info()
                 sys.exit()
@@ -361,7 +388,14 @@ def main(argv):
 
 
 if __name__=="__main__":
+    print('start:{0}'.format(datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')))
+    time_start=time.time()
+
     main(sys.argv[1:])
     # ground_truth_file = '/Users/songyang/Downloads/datasets/EuRoC_ASL/V1_02_medium_mav0/state_groundtruth_estimate0/data.csv'
     # algo_result_file = '/Users/songyang/project/code/ros/catkin_ws/test/loop4.csv'
     # save_aligned_data_loop('align.csv', ground_truth_file, algo_result_file)
+    time_end=time.time()
+    print('Time cost:{0:0.2f}s'.format(time_end-time_start))
+    print('end:{0}'.format(datetime.datetime.now().strftime('%Y/%m/%d %H:%M:%S')))
+
