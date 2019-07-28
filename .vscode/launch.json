@@ -11,19 +11,19 @@
             "program": "${file}",
             "console": "integratedTerminal",
             // "args": [
-            //     "-o", "align_vio_2.csv", "-v", 
-            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V2_03_difficult_mav0/state_groundtruth_estimate0/data.csv",
-            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_2.csv"
-            // ]     
+            //     "-v", "align_vio_1.csv",
+            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V1_02_medium_mav0/state_groundtruth_estimate0/data.csv",
+            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_1.csv", "vicon_room_1_02"
+            // ]
 
             // "args": [
-            //     "-o", "align_loop_2.csv", "-l", 
-            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V2_03_difficult_mav0/state_groundtruth_estimate0/data.csv",
-            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_loop_2.csv"
+            //     "-l", "align_loop_2.csv",
+            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V1_02_medium_mav0/state_groundtruth_estimate0/data.csv",
+            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_loop_2.csv", "vicon_room_1_02"
             // ]
 
             "args": [
-                "-r", "/Users/songyang/project/code/github/vio-evaluate/align_loop_2.csv"
+                "-r", "/Users/songyang/project/code/github/vio-evaluate/align_vio_1.csv"
             ]
         },
         {

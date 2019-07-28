@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*
 import sys
 import os
 import datetime
@@ -5,10 +6,11 @@ import time
 import math
 import numpy as np
 import csv
+import yaml
 import getopt
+import attitude
 
-
-def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_file):
+def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_file, dataset):
     output_file = open(output_align_file, 'a+')
     output_file.write("\
         time,ref_pose_x,ref_pose_y,ref_pose_z,\
@@ -26,6 +28,12 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
     first_timestamp = 0
     timestamp = 0
 
+    cfg = yaml.load(open('euroc.yaml'))
+    tm = cfg[dataset]['transition_matrix'] #shape:[3,4]
+    tm = np.array(tm).reshape(3,4)
+    dcm = np.split(tm,[3],1)[0] #取旋转矩阵，即转换矩阵中开始的3X3元素。
+
+    #get row count of ground-truth file.
     with open(ground_truth_file,'r') as csv_file:
         ground_truth_reader = csv.reader(csv_file)
         row_count = sum(1 for row in ground_truth_reader)
@@ -68,32 +76,39 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         algo_qz = float(item[10])
                         algo_qw = float(item[11])
 
-                        (gt_roll, gt_pitch, gt_yaw) = cal_attitude(gt_qw, gt_qx, gt_qy, gt_qz)
-                        gt_roll = gt_roll*r2d
-                        gt_pitch = gt_pitch*r2d
-                        gt_yaw = gt_yaw*r2d
-
-                        (algo_roll, algo_pitch, algo_yaw) = cal_attitude(algo_qw, algo_qx, algo_qy, algo_qz)
-                        algo_roll = algo_roll*r2d
-                        algo_pitch = algo_pitch*r2d
-                        algo_yaw = algo_yaw*r2d
+                        (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*r2d
+                        (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*r2d
 
                         if not b_align:
                             b_align = True
                             first_timestamp = timestamp
-                            d_x = gt_x - algo_x
-                            d_y = gt_y - algo_y
-                            d_z = gt_z - algo_z
+                            # d_x = gt_x - algo_x
+                            # d_y = gt_y - algo_y
+                            # d_z = gt_z - algo_z
                             d_roll = gt_roll - algo_roll
                             d_pitch = gt_pitch - algo_pitch
                             d_yaw = gt_yaw - algo_yaw
 
-                        align_x = algo_x + d_x
-                        align_y = algo_y + d_y
-                        align_z = algo_z + d_z
-                        align_roll = algo_roll + d_roll
-                        align_pitch = algo_pitch + d_pitch
-                        align_yaw = algo_yaw + d_yaw
+                        algo_pose = np.array([algo_x,algo_y,algo_z,1]).T
+                        align_pose = np.matmul(tm, algo_pose)
+                        align_x = align_pose[0]
+                        align_y = align_pose[1]
+                        align_z = align_pose[2]
+
+                        if 0:
+                            align_roll = algo_roll + d_roll
+                            align_pitch = algo_pitch + d_pitch
+                            align_yaw = algo_yaw + d_yaw
+                        else :
+                            #欧拉角对齐的方式不对。
+                            algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T
+                            algo_dcm = attitude.euler2dcm(algo_euler)
+                            align_dcm = np.matmul(dcm, algo_dcm)
+                            align_euler = attitude.dcm2euler(align_dcm)
+                            align_yaw = align_euler[0]
+                            align_pitch = align_euler[1]
+                            align_roll = align_euler[2]
+
 
                         str = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},\n'.format(\
                             timestamp, gt_x, gt_y, gt_z, gt_roll, gt_pitch, gt_yaw,  \
@@ -107,7 +122,7 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
     print("time length:{0:0.3f}s".format((timestamp - first_timestamp)/1000))
 
 
-def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file):
+def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file, dataset):
     # output_align_file = 'align.csv'
     output_file = open(output_align_file, 'a+')
     output_file.write("\
@@ -127,6 +142,11 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file)
     loop_file_row_count = 0
     first_timestamp = 0
     timestamp = 0
+
+    cfg = yaml.load(open('euroc.yaml'))
+    tm = cfg[dataset]['transition_matrix'] #shape:[3,4]
+    tm = np.array(tm).reshape(3,4)
+    dcm = np.split(tm,[3],1)[0] #取旋转矩阵，即转换矩阵中开始的3X3元素。
 
     #get row count of ground-truth file.
     with open(ground_truth_file,'r') as csv_file:
@@ -194,16 +214,19 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file)
                     if not b_align:
                         b_align = True
                         first_timestamp = timestamp
-                        d_x = gt_x - algo_x
-                        d_y = gt_y - algo_y
-                        d_z = gt_z - algo_z
+                        # d_x = gt_x - algo_x
+                        # d_y = gt_y - algo_y
+                        # d_z = gt_z - algo_z
                         d_roll = gt_roll - algo_roll
                         d_pitch = gt_pitch - algo_pitch
                         d_yaw = gt_yaw - algo_yaw
 
-                    align_x = algo_x + d_x
-                    align_y = algo_y + d_y
-                    align_z = algo_z + d_z
+                    algo_pose = np.array([algo_x,algo_y,algo_z,1]).T
+                    align_pose = np.matmul(tm, algo_pose)
+                    align_x = align_pose[0]
+                    align_y = align_pose[1]
+                    align_z = align_pose[2]
+
                     align_roll = algo_roll + d_roll
                     align_pitch = algo_pitch + d_pitch
                     align_yaw = algo_yaw + d_yaw
@@ -291,11 +314,11 @@ def eval_rmse(align_file):
 
 def cal_rmse(x, y):
     if x.size != y.size:
-        raise ValueError("Size of IMU Rotation Matrix is incorrect!")
+        raise ValueError("Size of is incorrect!")
 
     e = x - y
-    e2 = np.multiply(e, e) #equal to: pow(e,2)
-    rmse = math.sqrt(e2.sum()/e.size)
+    e2 = np.multiply(e, e) #equal to: pow(e,2) or e**2  
+    rmse = math.sqrt(e2.sum()/e.size) # 'e2.sum()' equal to 'np.sum(e2)', 'math.sqrt' equal to '**0.5'
     return rmse
 
 def cal_attitude(q0, q1, q2, q3):
@@ -352,9 +375,9 @@ def main(argv):
     align_file = ''
     ground_truth_file = '' 
     algo_result_file = ''
-
+    dataset = ''
     try:
-        opts, args = getopt.getopt(argv, "hvlo:r:", [])
+        opts, args = getopt.getopt(argv, "hvlr:", [])
         if 0 == len(opts):
             show_help_info()    
             sys.exit(0)
@@ -363,17 +386,19 @@ def main(argv):
             if opt in ("-h",):
                 show_help_info()
                 sys.exit(0)
-            elif opt in ("-o",):
-                output_align_file = arg
             elif opt in ("-v",):
-                ground_truth_file = args[0]
-                algo_result_file = args[1]
-                save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_file)
+                output_align_file = args[0]
+                ground_truth_file = args[1]
+                algo_result_file = args[2]
+                dataset = args[3]
+                save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_file, dataset)
                 break
             elif opt in ("-l",):
-                ground_truth_file = args[0]
-                algo_result_file = args[1]
-                save_aligned_data_loop(output_align_file, ground_truth_file, algo_result_file)
+                output_align_file = args[0]
+                ground_truth_file = args[1]
+                algo_result_file = args[2]
+                dataset = args[3]
+                save_aligned_data_loop(output_align_file, ground_truth_file, algo_result_file, dataset)
                 break 
             elif opt in ("-r",):
                 align_file = arg
