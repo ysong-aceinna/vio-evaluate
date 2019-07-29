@@ -1,0 +1,332 @@
+
+
+MH_02_easy
+0. Time length: 
+    vio: 150.9s
+    loop: 149.2s
+
+1. mono + IMU:
+    1.1. align_vio_1
+        rmse_pose_x:2.2272400246282724
+        rmse_pose_y:2.043237779243675
+        rmse_pose_z:0.013789936794780697
+        rmse_pose:3.0225169829451044
+        rmse_roll:72.21437395429787
+        rmse_pitch:0.7937254952142957
+        rmse_yaw:76.93009519953105
+        rmse_attitude:105.5167538980509
+    1.2. align_vio_loop_1
+        rmse_pose_x:2.282299248001111
+        rmse_pose_y:2.1380731358266103
+        rmse_pose_z:0.01250589604121515
+        rmse_pose:3.1273635843959147
+        rmse_roll:77.7428099629545
+        rmse_pitch:0.5098118955682382
+        rmse_yaw:82.12946874002284
+        rmse_attitude:113.09046840748034
+
+2. stero + IMU:
+    2.1. align_vio_1
+        rmse_pose_x:2.041875942530957
+        rmse_pose_y:2.1258472565307445
+        rmse_pose_z:0.1789543649179435
+        rmse_pose:2.953050725522534
+        rmse_roll:89.65280192318784
+        rmse_pitch:0.23885310416766065
+        rmse_yaw:76.41613222958108
+        rmse_attitude:117.80113415588384
+    2.2. align_vio_loop_1    
+        rmse_pose_x:2.047378653799372
+        rmse_pose_y:2.2110485659726073
+        rmse_pose_z:0.064240433002411
+        rmse_pose:3.0140706604781498
+        rmse_roll:91.00345959150873
+        rmse_pitch:0.2558889189788127
+        rmse_yaw:82.2816475206825
+        rmse_attitude:122.68644854049715
+
+3. stero:
+    3.1. align_vio_1
+        rmse_pose_x:2.0803960586665124
+        rmse_pose_y:1.1741370982721497
+        rmse_pose_z:3.9739985120752834
+        rmse_pose:4.6367348274869755
+        rmse_roll:204.0959836410542
+        rmse_pitch:21.128588013680897
+        rmse_yaw:84.09718172453651
+        rmse_attitude:221.7519419167982
+    3.2. align_vio_loop_1
+        rmse_pose_x:2.371720867704014
+        rmse_pose_y:1.078163631525925
+        rmse_pose_z:4.182894352495017
+        rmse_pose:4.9278902031987855
+        rmse_roll:196.5949719340603
+        rmse_pitch:26.193825265562488
+        rmse_yaw:89.05141505404615
+        rmse_attitude:217.4071157872363
+
+    3.3. align_vio_2
+        rmse_pose_x:2.0248488832962397
+        rmse_pose_y:1.20792883671637
+        rmse_pose_z:3.938033304965611
+        rmse_pose:4.589903200044132
+        rmse_roll:203.38209385322006
+        rmse_pitch:21.523705032433845
+        rmse_yaw:84.60833723905769
+        rmse_attitude:221.32807483191405
+    3.4. align_vio_loop_2
+        rmse_pose_x:2.381688256812085
+        rmse_pose_y:1.0809857027471108
+        rmse_pose_z:4.174851783671444
+        rmse_pose:4.926495352459483
+        rmse_roll:197.40198457589065
+        rmse_pitch:26.162186222562358
+        rmse_yaw:89.42232448735588
+        rmse_attitude:218.28503297103575
+
+****************************************************
+V1_02_medium
+0. Time length: 
+    vio: 84s
+    loop: 78.9s
+
+1. mono + IMU:
+    1.1. align_vio_1
+        rmse_pose_x:0.2720658006083402
+        rmse_pose_y:0.3808540799441672
+        rmse_pose_z:0.3030692353174379
+        rmse_pose:0.5576025389707904
+        rmse_roll:118.74763118465732
+        rmse_pitch:2.1600078258604625
+        rmse_yaw:70.52402693501534
+        rmse_attitude:138.12785353036494
+
+    1.2. align_vio_loop_1
+        rmse_pose_x:0.2798666950274
+        rmse_pose_y:0.3115914325401082
+        rmse_pose_z:0.25367114103762045
+        rmse_pose:0.4896566507393572
+        rmse_roll:136.31247549230503
+        rmse_pitch:2.8861914013943206
+        rmse_yaw:72.50352543353556
+        rmse_attitude:154.42209128209953
+
+    1.3. align_vio_2 [这个z轴的效果很好，但是整体效果略差]
+        rmse_pose_x:0.5111988671636681
+        rmse_pose_y:0.4659649428268319
+        rmse_pose_z:0.062446026283100205
+        rmse_pose:0.6945121423931909
+        rmse_roll:91.91519486412336
+        rmse_pitch:1.002742164227647
+        rmse_yaw:85.43056906646059
+        rmse_attitude:125.49020148910823
+
+    1.4. align_vio_3
+        rmse_pose_x:0.2715568078187879
+        rmse_pose_y:0.3815678071204659
+        rmse_pose_z:0.30244841740489975
+        rmse_pose:0.5575052793419804
+        rmse_roll:118.74751683472996
+        rmse_pitch:2.159754141083909
+        rmse_yaw:70.52730545315755
+        rmse_attitude:138.12942520276914
+
+2. stero + IMU:
+    2.1. align_vio_1
+        rmse_pose_x:0.6801027056314002
+        rmse_pose_y:0.5228642119471586
+        rmse_pose_z:0.150059296002836
+        rmse_pose:0.8708871721750993
+        rmse_roll:66.80266137089954
+        rmse_pitch:0.5031014639895822
+        rmse_yaw:87.35508465132204
+        rmse_attitude:109.97163039510592
+    2.2. align_vio_loop_1
+        rmse_pose_x:0.66187876247436
+        rmse_pose_y:0.5329263984971183
+        rmse_pose_z:0.02115003765852747
+        rmse_pose:0.8500243329003333
+        rmse_roll:59.440808134816265
+        rmse_pitch:2.0281610337620335
+        rmse_yaw:89.47757376342228
+        rmse_attitude:107.4409573462913
+
+    2.3. align_vio_2
+        rmse_pose_x:0.6799471330956711
+        rmse_pose_y:0.5223149053178179
+        rmse_pose_z:0.1499238341128286
+        rmse_pose:0.8704126148886367
+        rmse_roll:65.6508578065858
+        rmse_pitch:0.4685592828840294
+        rmse_yaw:87.36058745382316
+        rmse_attitude:109.28003897702091
+    2.4. align_vio_loop_2
+        rmse_pose_x:0.6618590878848342
+        rmse_pose_y:0.5323878804683253
+        rmse_pose_z:0.019702068557899848
+        rmse_pose:0.8496366746973442
+        rmse_roll:59.43628008820647
+        rmse_pitch:1.7815388709636026
+        rmse_yaw:89.49653942945086
+        rmse_attitude:107.4498759483683    
+
+    2.5. align_vio_3
+        rmse_pose_x:0.6810787812998378
+        rmse_pose_y:0.5231088566883125
+        rmse_pose_z:0.1491656492696764
+        rmse_pose:0.8716430308358288
+        rmse_roll:66.80300642471686
+        rmse_pitch:0.5020621862256793
+        rmse_yaw:87.35069206110343
+        rmse_attitude:109.96834607000925
+    2.6. align_vio_loop_3
+        rmse_pose_x:0.6678177801522174
+        rmse_pose_y:0.5276854485992751
+        rmse_pose_z:0.019700179326999984
+        rmse_pose:0.8513639745821816
+        rmse_roll:59.47799077129324
+        rmse_pitch:2.0280759290647934
+        rmse_yaw:89.53834331077236
+        rmse_attitude:107.51213606380365
+
+    2.7. align_vio_4
+        rmse_pose_x:0.6803722832398656
+        rmse_pose_y:0.5228156411081049
+        rmse_pose_z:0.1496214796821335
+        rmse_pose:0.870993240829444
+        rmse_roll:66.80180703124583
+        rmse_pitch:0.49717361942393185
+        rmse_yaw:87.35557991645071
+        rmse_attitude:109.97147787852568    
+    2.8. align_vio_loop_4
+        rmse_pose_x:0.6680634262037365
+        rmse_pose_y:0.5295324820141506
+        rmse_pose_z:0.020228942548492702
+        rmse_pose:0.8527148415829129
+        rmse_roll:59.441278874045175
+        rmse_pitch:1.9786095833890867
+        rmse_yaw:89.4826817730772
+        rmse_attitude:107.4445478717617
+
+3. stero:
+    3.1. align_vio_1
+        rmse_pose_x:1.3057556207848358
+        rmse_pose_y:3.2373428522672216
+        rmse_pose_z:1.4843772700691609
+        rmse_pose:3.7932522146879237
+        rmse_roll:227.99441771262957
+        rmse_pitch:22.89001299843988
+        rmse_yaw:101.91269726612806
+        rmse_attitude:250.7819871267616
+    3.2. align_vio_loop_1
+        rmse_pose_x:1.2325870566943777
+        rmse_pose_y:3.36980962680879
+        rmse_pose_z:1.278430205556642
+        rmse_pose:3.809103774346835
+        rmse_roll:236.96981843908608
+        rmse_pitch:25.050228332742048
+        rmse_yaw:104.16272734551201
+        rmse_attitude:260.06168990958935
+    3.3. align_vio_2
+        rmse_pose_x:1.558253977208503
+        rmse_pose_y:3.266036724419834
+        rmse_pose_z:1.3639208058311456
+        rmse_pose:3.867225272378665
+        rmse_roll:230.55501227581703
+        rmse_pitch:21.14886202813349
+        rmse_yaw:101.65854580910698
+        rmse_attitude:252.85835557997578
+    3.4. align_vio_loop_2
+        rmse_pose_x:1.2587763350017196
+        rmse_pose_y:3.3785042759804145
+        rmse_pose_z:1.260502794176605
+        rmse_pose:3.8193816644196916
+        rmse_roll:237.77825658084123
+        rmse_pitch:24.787554683366494
+        rmse_yaw:104.30270403029797
+        rmse_attitude:260.82940063926304
+    3.5. align_vio_3
+        rmse_pose_x:1.3067307674178863
+        rmse_pose_y:3.233005862437504
+        rmse_pose_z:1.4830750415581055
+        rmse_pose:3.789377756830847
+        rmse_roll:228.0938562240446
+        rmse_pitch:22.969519554880993
+        rmse_yaw:101.90047542659629
+        rmse_attitude:250.8746957504952
+    3.6. align_vio_loop_3
+        rmse_pose_x:1.2343083370312633
+        rmse_pose_y:3.3704949004688123
+        rmse_pose_z:1.2774002671488418
+        rmse_pose:3.809921834823266
+        rmse_roll:237.07811553660892
+        rmse_pitch:25.000653447806965
+        rmse_yaw:104.19765166965647
+        rmse_attitude:260.1695911375465    
+
+
+************************************************
+V2_03_difficult
+0. Time length: 
+    vio: 109s
+    loop: 107.9s
+
+1. mono + IMU:
+    1.1. align_vio_1
+        rmse_pose_x:0.2737933835633895
+        rmse_pose_y:0.42211945016208957
+        rmse_pose_z:0.1087608338265925
+        rmse_pose:0.5147587454943237
+        rmse_roll:101.13965300778918
+        rmse_pitch:4.3097578229627205
+        rmse_yaw:287.09167635715136
+        rmse_attitude:304.4165469493863
+
+    1.2. align_vio_loop_1
+        rmse_pose_x:0.27090614469824953
+        rmse_pose_y:0.36111271508035026
+        rmse_pose_z:0.06444289622686414
+        rmse_pose:0.4560103278458477
+        rmse_roll:102.25271258941768
+        rmse_pitch:4.980065451254407
+        rmse_yaw:288.98795855227485
+        rmse_attitude:306.5851569662239
+
+2. stero + IMU:
+    2.1. align_vio_1
+        rmse_pose_x:0.37453550689052767
+        rmse_pose_y:0.5802118054188715
+        rmse_pose_z:0.06607730047171187
+        rmse_pose:0.6937498069958649
+        rmse_roll:107.85769501695808
+        rmse_pitch:2.9507437548983177
+        rmse_yaw:214.1456787417934
+        rmse_attitude:239.79232887409387
+    2.2. align_vio_loop_1
+        rmse_pose_x:0.24745172364194562
+        rmse_pose_y:0.31234903625947474
+        rmse_pose_z:0.046037089866307834
+        rmse_pose:0.4011404861503648
+        rmse_roll:378.9264714010172
+        rmse_pitch:3.086929501541006
+        rmse_yaw:213.5852982230372
+        rmse_attitude:434.98675782050776
+    2.3. align_vio_2
+        rmse_pose_x:0.2770399918489602
+        rmse_pose_y:0.4136530772002717
+        rmse_pose_z:0.05854236898070092
+        rmse_pose:0.5012855816067309
+        rmse_roll:98.5669585937122
+        rmse_pitch:4.153324784022916
+        rmse_yaw:216.40422668544497
+        rmse_attitude:237.83079018600938
+    2.4. align_vio_loop_2
+        rmse_pose_x:0.19217592398251557
+        rmse_pose_y:0.21402392734562742
+        rmse_pose_z:0.04849876735263679
+        rmse_pose:0.2917018300760302
+        rmse_roll:99.26287034546141
+        rmse_pitch:4.392417981440227
+        rmse_yaw:284.1409588742716
+        rmse_attitude:301.0124503653197
+

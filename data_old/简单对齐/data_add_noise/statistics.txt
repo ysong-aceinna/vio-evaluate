@@ -1,0 +1,688 @@
+
+MH_02_easy
+0. Time length: 
+    vio: 150.9s
+    loop: 149.2s
+
+
+1. mono + IMU:
+    1.1. align_vio_1-1 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:2.227294016030821
+        rmse_pose_y:2.040032686252636
+        rmse_pose_z:0.014154651529545587
+        rmse_pose:3.020392747472714
+        rmse_roll:72.7767324803411
+        rmse_pitch:0.7796768266110695
+        rmse_yaw:76.92806485864966
+        rmse_attitude:105.90083970094712
+
+    1.2. align_vio_1-2 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:2.2265703664877674
+        rmse_pose_y:2.041808678033355
+        rmse_pose_z:0.013745654566190849
+        rmse_pose:3.021057301282655
+        rmse_roll:71.6311154450223
+        rmse_pitch:0.8025139470129328
+        rmse_yaw:76.92366051215704
+        rmse_attitude:105.11379678768554
+
+    1.3. align_vio_1-3 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:2.2204642213091628
+        rmse_pose_y:2.0502520583770703
+        rmse_pose_z:0.014179982174085956
+        rmse_pose:3.0222832317451616
+        rmse_roll:71.65880418769248
+        rmse_pitch:0.8108846626108813
+        rmse_yaw:76.92512350382385
+        rmse_attitude:105.13380225990433
+
+    1.4. align_vio_1-4 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:2.2248570491386723
+        rmse_pose_y:2.0409127725344964
+        rmse_pose_z:0.013954490866316923
+        rmse_pose:3.01919005066124
+        rmse_roll:72.21446033790376
+        rmse_pitch:0.7935093884757438
+        rmse_yaw:76.92390836201818
+        rmse_attitude:105.51230078399601
+
+    1.5. align_vio_1-5 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:2.2208259736652307
+        rmse_pose_y:2.042665477785907
+        rmse_pose_z:0.013261347387996536
+        rmse_pose:3.017403871340228
+        rmse_roll:72.82439995642392
+        rmse_pitch:0.8050048234669799
+        rmse_yaw:76.91244474533435
+        rmse_attitude:105.92245002115042
+
+    1.6. align_vio_2-1 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:2.2146689037358027
+        rmse_pose_y:2.0433273974967414
+        rmse_pose_z:0.01357406544164721
+        rmse_pose:3.013325316288927
+        rmse_roll:72.21957707766347
+        rmse_pitch:0.7796855663833865
+        rmse_yaw:76.91521445019377
+        rmse_attitude:105.50936184423777
+
+    1.7. align_vio_2-2 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:2.2267004059830833
+        rmse_pose_y:2.037271888821809
+        rmse_pose_z:0.0139959511965877
+        rmse_pose:3.0180900141710003
+        rmse_roll:73.98812458266093
+        rmse_pitch:0.8140788130820447
+        rmse_yaw:76.92358680764924
+        rmse_attitude:106.73398479831629
+
+    1.8. align_vio_2-3 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:2.223831491204723
+        rmse_pose_y:2.039519247967097
+        rmse_pose_z:0.01393892640130287
+        rmse_pose:3.01749226308392
+        rmse_roll:72.21104042068632
+        rmse_pitch:0.8015767968132201
+        rmse_yaw:76.91995939419712
+        rmse_attitude:105.50714211466499
+
+    1.9. align_vio_2-4 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:2.2246470269134986
+        rmse_pose_y:2.047187845045916
+        rmse_pose_z:0.014177015759427532
+        rmse_pose:3.0232819013506913
+        rmse_roll:72.20843068831631
+        rmse_pitch:0.7709824543701617
+        rmse_yaw:76.9432429408869
+        rmse_attitude:105.52210437000709
+
+
+    1.10. align_vio_2-5 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:2.2315708051533525
+        rmse_pose_y:2.053479048681058
+        rmse_pose_z:0.014010990738890474
+        rmse_pose:3.032635944132815
+        rmse_roll:72.2221755596253
+        rmse_pitch:0.8086048465514031
+        rmse_yaw:76.93186626219551
+        rmse_attitude:105.52349752992241
+
+
+    1.11. align_vio_3-1 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:2.2215902669896135
+        rmse_pose_y:2.03978554414185
+        rmse_pose_z:0.013792922774753049
+        rmse_pose:3.0160203290415195
+        rmse_roll:73.38742853983962
+        rmse_pitch:0.7893326934220511
+        rmse_yaw:76.91707691022229
+        rmse_attitude:106.31356655763187
+
+    1.12. align_vio_3-2 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:2.2284692362027108
+        rmse_pose_y:2.0390527547221895
+        rmse_pose_z:0.014053718953602657
+        rmse_pose:3.0205974210838606
+        rmse_roll:73.95251158065061
+        rmse_pitch:0.7783836912892249
+        rmse_yaw:76.93026441035983
+        rmse_attitude:106.71384836329821
+
+    1.13. align_vio_3-3 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:2.2293386988106345
+        rmse_pose_y:2.0495720785758547
+        rmse_pose_z:0.013227326834834411
+        rmse_pose:3.0283447131176526
+        rmse_roll:72.82651658234336
+        rmse_pitch:0.8037260252355328
+        rmse_yaw:76.91817246711916
+        rmse_attitude:105.92805458764671
+
+    1.14. align_vio_3-4 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:2.2313486069059456
+        rmse_pose_y:2.039283746661359
+        rmse_pose_z:0.014006284999805486
+        rmse_pose:3.022877930211174
+        rmse_roll:73.98603846341616
+        rmse_pitch:0.8102577002283273
+        rmse_yaw:76.92867054275914
+        rmse_attitude:106.73617360823486
+
+    1.15. align_vio_3-5 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:2.230586340871104
+        rmse_pose_y:2.052209204952112
+        rmse_pose_z:0.014848448994042513
+        rmse_pose:3.031055677715018
+        rmse_roll:73.94265936657042
+        rmse_pitch:0.8007601805945942
+        rmse_yaw:76.9356994518547
+        rmse_attitude:106.71110505103772
+
+    1.16. align_vio_4-1 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:2.2124548178122088
+        rmse_pose_y:2.0372907526613364
+        rmse_pose_z:0.013598997327478704
+        rmse_pose:3.007606168444958
+        rmse_roll:70.99604614244006
+        rmse_pitch:0.7470312672709009
+        rmse_yaw:76.90920515068251
+        rmse_attitude:104.67102015593203
+
+    1.17. align_vio_4-2 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:2.2258941326764976
+        rmse_pose_y:2.0391973833298316
+        rmse_pose_z:0.014307375527007123
+        rmse_pose:3.0187970052750086
+        rmse_roll:71.01774793326777
+        rmse_pitch:0.7787632498929146
+        rmse_yaw:76.9329496092985
+        rmse_attitude:104.7034179446851
+
+    1.18. align_vio_4-3 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:2.218539652016284
+        rmse_pose_y:2.045266359894453
+        rmse_pose_z:0.014432185107372451
+        rmse_pose:3.0174891811655953
+        rmse_roll:69.82169061178679
+        rmse_pitch:0.8189390340738072
+        rmse_yaw:76.91877774329245
+        rmse_attitude:103.88569444611528
+
+    1.19. align_vio_4-4 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:2.2435922160091155
+        rmse_pose_y:2.0474578820344633
+        rmse_pose_z:0.016191007038224667
+        rmse_pose:3.0374416799587536
+        rmse_roll:83.66895313945763
+        rmse_pitch:0.8185218490006976
+        rmse_yaw:76.94529267686087
+        rmse_attitude:113.67383939410962
+
+    1.20. align_vio_4-5 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:2.2160412076100333
+        rmse_pose_y:2.0450554032186625
+        rmse_pose_z:0.015208805303378852
+        rmse_pose:3.0155134792964096
+        rmse_roll:79.10316446128239
+        rmse_pitch:0.797285035275738
+        rmse_yaw:76.90887726602111
+        rmse_attitude:110.33096434608039
+
+
+
+
+
+
+**************************************************
+V1_02_medium
+0. Time length: 
+    vio: 84s
+    loop: 78.9s
+
+1. mono + IMU:
+    1.1. align_vio_1 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:0.27073340129339785
+        rmse_pose_y:0.37337453590432323
+        rmse_pose_z:0.30039629705008125
+        rmse_pose:0.5504026289172876
+        rmse_roll:118.74733043751073
+        rmse_pitch:2.1582925028059727
+        rmse_yaw:70.60916100805451
+        rmse_attitude:138.17105460560254
+
+    1.2. align_vio_2 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+
+        rmse_pose_x:0.27520276977462066
+        rmse_pose_y:0.43442720472808183
+        rmse_pose_z:0.3342498020296662
+        rmse_pose:0.613340436345386
+        rmse_roll:120.5069861973886
+        rmse_pitch:2.166919751915945
+        rmse_yaw:70.57521703494001
+        rmse_attitude:139.66921823765512
+
+    1.3. align_vio_3 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+        
+        rmse_pose_x:0.26813796589498107
+        rmse_pose_y:0.381221240879479
+        rmse_pose_z:0.3028298822730252
+        rmse_pose:0.5558179025989376
+        rmse_roll:118.06369484007111
+        rmse_pitch:2.1625170092064034
+        rmse_yaw:70.5476916207333
+        rmse_attitude:137.5524965681053
+
+    1.4. align_vio_4 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+        
+        rmse_pose_x:0.2719718398587834
+        rmse_pose_y:0.38406208281510745
+        rmse_pose_z:0.30363936640611416
+        rmse_pose:0.5600618090567832
+        rmse_roll:118.7476040794313
+        rmse_pitch:2.1614153456465695
+        rmse_yaw:70.5084102434366
+        rmse_attitude:138.11987947416736        
+
+    1.5. align_vio_5 [ARW:1.0, VRW:0.2]
+    [add extra noise: 
+        std_gyro:0.177;
+        std_accel:0.03937]
+        
+        rmse_pose_x:0.27323620685988714
+        rmse_pose_y:0.3820036356060045
+        rmse_pose_z:0.30405612156646467
+        rmse_pose:0.5594952434269882
+        rmse_roll:118.74628696225444
+        rmse_pitch:2.160888810202938
+        rmse_yaw:70.5045195634891
+        rmse_attitude:138.1167527371338
+
+    1.6. align_vio_1-1 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:0.2688957616910025
+        rmse_pose_y:0.37085673972639166
+        rmse_pose_z:0.3021050902293168
+        rmse_pose:0.5487323004875297
+        rmse_roll:118.74856847498599
+        rmse_pitch:2.1581514916612305
+        rmse_yaw:70.54693582364774
+        rmse_attitude:138.1403282420643
+
+    1.7. align_vio_1-2 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:0.27556446139643365
+        rmse_pose_y:0.3997116976741202
+        rmse_pose_z:0.307993815359178
+        rmse_pose:0.5749481750051367
+        rmse_roll:118.0638532749467
+        rmse_pitch:2.1665845626661273
+        rmse_yaw:71.65259388573165
+        rmse_attitude:138.12263300903626
+
+    1.8. align_vio_1-3 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:0.33217425011994567
+        rmse_pose_y:0.3520518416947622
+        rmse_pose_z:0.19863262423741374
+        rmse_pose:0.5231970480563358
+        rmse_roll:114.527785426516
+        rmse_pitch:2.0839125514358705
+        rmse_yaw:75.36165757482435
+        rmse_attitude:137.11431638836697
+
+    1.9. align_vio_1-4 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:0.2733481683383997
+        rmse_pose_y:0.3882831194648699
+        rmse_pose_z:0.3057733106032914
+        rmse_pose:0.5647834270520209
+        rmse_roll:118.7469726045991
+        rmse_pitch:2.1622536909182326
+        rmse_yaw:71.69733296597009
+        rmse_attitude:138.7300486492183
+
+    1.10. align_vio_1-5 [ARW:1.5, VRW:0.3]
+    [add extra noise: 
+        std_gyro:0.31749;
+        std_accel:0.0657858]
+
+        rmse_pose_x:0.2694084959037911
+        rmse_pose_y:0.36868079068287357
+        rmse_pose_z:0.29795496611478295
+        rmse_pose:0.5452372189388334
+        rmse_roll:118.06537350958783
+        rmse_pitch:2.1581324650457203
+        rmse_yaw:70.57775589543417
+        rmse_attitude:137.56929012294373
+
+    1.11. align_vio_2-1 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:0.3884753079474161
+        rmse_pose_y:0.3818296427273726
+        rmse_pose_z:0.11121675453016822
+        rmse_pose:0.5559461371737161
+        rmse_roll:104.74129057909298
+        rmse_pitch:1.7151760687260325
+        rmse_yaw:77.99925835523221
+        rmse_attitude:130.60460973904014
+
+    1.12. align_vio_2-2 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:0.3610056021780663
+        rmse_pose_y:0.35409213317039506
+        rmse_pose_z:0.1652779512336796
+        rmse_pose:0.5319991397935824
+        rmse_roll:112.32453382562878
+        rmse_pitch:1.751634883879528
+        rmse_yaw:75.01397822681764
+        rmse_attitude:135.08133125389577
+
+    1.13. align_vio_2-3 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:0.2734255689301578
+        rmse_pose_y:0.3858517468091898
+        rmse_pose_z:0.30652150665152406
+        rmse_pose:0.5635588223960334
+        rmse_roll:118.74784901194558
+        rmse_pitch:2.1611867054345892
+        rmse_yaw:71.70831999358735
+        rmse_attitude:138.73646070605338
+
+    1.14. align_vio_2-4 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:0.2722146769582199
+        rmse_pose_y:0.38964629937315715
+        rmse_pose_z:0.30409651829373885
+        rmse_pose:0.5642692277672408
+        rmse_roll:117.37701064879624
+        rmse_pitch:2.166186959819262
+        rmse_yaw:71.69534445104601
+        rmse_attitude:137.55826914710235
+
+    1.15. align_vio_2-5 [ARW:2.0, VRW:0.4]
+    [add extra noise: 
+        std_gyro:0.445;
+        std_accel:0.0906458]
+
+        rmse_pose_x:0.27395520980889326
+        rmse_pose_y:0.3789809337652419
+        rmse_pose_z:0.30527093514767895
+        rmse_pose:0.5584517427539714
+        rmse_roll:118.74729101748186
+        rmse_pitch:2.1622928277737716
+        rmse_yaw:70.54396050351433
+        rmse_attitude:138.137775419271
+
+    1.16. align_vio_3-1 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:0.2714166384065879
+        rmse_pose_y:0.3693553099487393
+        rmse_pose_z:0.298544442998645
+        rmse_pose:0.5470092513263674
+        rmse_roll:117.37610194515227
+        rmse_pitch:2.1596352497729288
+        rmse_yaw:70.56902841048276
+        rmse_attitude:136.97372413368328
+
+    1.17. align_vio_3-2 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:0.2533001790951094
+        rmse_pose_y:0.37124976802058807
+        rmse_pose_z:0.306027670519336
+        rmse_pose:0.5437281546034252
+        rmse_roll:118.0309964222634
+        rmse_pitch:2.1731049463121677
+        rmse_yaw:68.19750661948133
+        rmse_attitude:136.33392245018933
+
+    1.18. align_vio_3-3 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:0.34415017027164607
+        rmse_pose_y:0.3678694181827956
+        rmse_pose_z:0.2015172084488666
+        rmse_pose:0.5425646817045646
+        rmse_roll:113.5314103718081
+        rmse_pitch:1.756638572788137
+        rmse_yaw:75.22861266197566
+        rmse_attitude:136.20503325183276
+
+    1.19. align_vio_3-4 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:0.273515811010334
+        rmse_pose_y:0.40477087562236125
+        rmse_pose_z:0.3044487669621329
+        rmse_pose:0.5756208928882767
+        rmse_roll:118.74561485761402
+        rmse_pitch:2.1629118584442506
+        rmse_yaw:72.8173817876699
+        rmse_attitude:139.31105600788288
+
+    1.20. align_vio_3-5 [ARW:5.0, VRW:1.0]
+    [add extra noise: 
+        std_gyro:1.1682;
+        std_accel:0.234272]
+
+        rmse_pose_x:0.27400015042545933
+        rmse_pose_y:0.4513430294202018
+        rmse_pose_z:0.33662805113725713
+        rmse_pose:0.6261829265093766
+        rmse_roll:118.46365094127427
+        rmse_pitch:2.1801385311341805
+        rmse_yaw:71.71093577173471
+        rmse_attitude:138.49493820211939
+
+    1.21. align_vio_4-1 [ARW:10.0, VRW:3.0]
+    [add extra noise: 
+        std_gyro:2.35188;, 
+        std_accel:0.706631]
+
+        rmse_pose_x:0.6528179581177667
+        rmse_pose_y:0.5656653135676464
+        rmse_pose_z:0.060674762561849865
+        rmse_pose:0.865927225710435
+        rmse_roll:68.63277906508829
+        rmse_pitch:0.613350983618355
+        rmse_yaw:89.18274660453338
+        rmse_attitude:112.53620241306677
+
+    1.22. align_vio_4-2 [ARW:10.0, VRW:3.0]
+    [add extra noise: 
+        std_gyro:2.35188;, 
+        std_accel:0.706631]
+
+        rmse_pose_x:0.28610210859343627
+        rmse_pose_y:0.4372462569189641
+        rmse_pose_z:0.3094398859358589
+        rmse_pose:0.6072822644695401
+        rmse_roll:118.06421901410987
+        rmse_pitch:2.1763889833090966
+        rmse_yaw:72.68531318137589
+        rmse_attitude:138.6616429756011
+
+    1.23. align_vio_4-3 [ARW:10.0, VRW:3.0]
+    [add extra noise: 
+        std_gyro:2.35188;, 
+        std_accel:0.706631]
+
+        rmse_pose_x:0.35095149212281507
+        rmse_pose_y:0.41624402021732554
+        rmse_pose_z:0.23115056016530758
+        rmse_pose:0.5914867840067495
+        rmse_roll:115.28070697761194
+        rmse_pitch:1.8721938189770706
+        rmse_yaw:78.48485023778615
+        rmse_attitude:139.4740772609791
+
+    1.24. align_vio_4-4 [ARW:10.0, VRW:3.0]
+    [add extra noise: 
+        std_gyro:2.35188;, 
+        std_accel:0.706631]
+
+        rmse_pose_x:0.4084698862384884
+        rmse_pose_y:0.41536917804244744
+        rmse_pose_z:0.09677267941154187
+        rmse_pose:0.5905456404985402
+        rmse_roll:115.94564351493845
+        rmse_pitch:2.158792704376611
+        rmse_yaw:81.90521067760515
+        rmse_attitude:141.97364604804844
+
+    1.25. align_vio_4-5 [ARW:10.0, VRW:3.0]
+    [add extra noise: 
+        std_gyro:2.35188;, 
+        std_accel:0.706631]
+
+        rmse_pose_x:0.2842582816462932
+        rmse_pose_y:0.33680167242920933
+        rmse_pose_z:0.3025645219881908
+        rmse_pose:0.5345871558516517
+        rmse_roll:118.06654537322231
+        rmse_pitch:2.144780305096863
+        rmse_yaw:69.56435159677947
+        rmse_attitude:137.0529395233997
+
+    1.26. align_vio_5-1 [ARW:50.0, VRW:20.0]
+    [add extra noise: 
+        std_gyro:11.7841;, 
+        std_accel:4.71397]
+
+        rmse_pose_x:61.925218518688
+        rmse_pose_y:17.416619214086225
+        rmse_pose_z:1.9470038381255856
+        rmse_pose:64.35730057562554
+        rmse_roll:151.84073958412753
+        rmse_pitch:3.461711996545781
+        rmse_yaw:71.71093051715783
+        rmse_attitude:167.95848059278967
+
+    1.27. align_vio_5-2 [ARW:50.0, VRW:20.0]
+    [add extra noise: 
+        std_gyro:11.7841;, 
+        std_accel:4.71397]
+
+        rmse_pose_x:56.51760899694017
+        rmse_pose_y:23.699003406622946
+        rmse_pose_z:1.039927405733103
+        rmse_pose:61.29408077626528
+        rmse_roll:153.51080398482088
+        rmse_pitch:3.3221348180266252
+        rmse_yaw:70.61197197357339
+        rmse_attitude:169.00489373332346
+
+
+
+
+
+
+
+
+

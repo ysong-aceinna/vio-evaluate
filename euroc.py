@@ -28,7 +28,7 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
     first_timestamp = 0
     timestamp = 0
 
-    cfg = yaml.load(open('euroc.yaml'))
+    cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
     tm = cfg[dataset]['transition_matrix'] #shape:[3,4]
     tm = np.array(tm).reshape(3,4)
     dcm = np.split(tm,[3],1)[0] #取旋转矩阵，即转换矩阵中开始的3X3元素。
@@ -101,10 +101,12 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                             align_yaw = algo_yaw + d_yaw
                         else :
                             #欧拉角对齐的方式不对。
-                            algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T
+                            # algo_euler = np.array([algo_yaw,algo_pitch,algo_roll,1]).T
+                            # align_euler = np.matmul(tm, algo_euler)
+                            algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
                             algo_dcm = attitude.euler2dcm(algo_euler)
                             align_dcm = np.matmul(dcm, algo_dcm)
-                            align_euler = attitude.dcm2euler(align_dcm)
+                            align_euler = attitude.dcm2euler(align_dcm)*r2d
                             align_yaw = align_euler[0]
                             align_pitch = align_euler[1]
                             align_roll = align_euler[2]
@@ -143,7 +145,7 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
     first_timestamp = 0
     timestamp = 0
 
-    cfg = yaml.load(open('euroc.yaml'))
+    cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
     tm = cfg[dataset]['transition_matrix'] #shape:[3,4]
     tm = np.array(tm).reshape(3,4)
     dcm = np.split(tm,[3],1)[0] #取旋转矩阵，即转换矩阵中开始的3X3元素。

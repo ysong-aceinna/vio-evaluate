@@ -1,7 +1,6 @@
 
-% EuRoC数据集的ground-truth和算法输出的pose没有对齐,需要最小二乘求解转换矩阵。
-% 如下，A为algo输出的pose,B为ground-truth, X为转换矩阵
-% XA=B => X=B*A'*inv(AA')
+% EuRoC数据集的ground-truth和算法输出的pose没有对齐,需要用"absoluteOrientationQuaternion"求解转换矩阵。
+% 如下，A为algo输出的pose,B为ground-truth, transition_matrix为转换矩阵
 
 clc;clear;close all;
 
@@ -26,6 +25,9 @@ algo_pose_z = data(:,10);
 % load('EuRoC_MH_02_easy.mat')
 [row,clum] = size(ref_pose_x);
 
+% for "machine_hall_02", n = 200;
+% for "vicon_room_1_02", n = 100;
+% for "vicon_room_1_03", n = 100;
 n =100; %取ref_pose 和 algo_pose 的前n个坐标点，求转换矩阵
 rx = ref_pose_x(1:n,:);
 ry = ref_pose_y(1:n,:);
@@ -34,14 +36,17 @@ ax = algo_pose_x(1:n,:);
 ay = algo_pose_y(1:n,:);
 az = algo_pose_z(1:n,:);
 
-A = [ax,ay,az,ones(n,1)]';
+A = [ax, ay, az]';
 B = [rx, ry, rz]';
-X = B * A' * inv((A*A')) %转换矩阵
+[s, R, T, error] = absoluteOrientationQuaternion( A, B, 1)
+transition_matrix = [R, T]  %transition_matrix就是A到B的转换矩阵。
 
-i=min(1600, clum); %防止越界
-a= X * [algo_pose_x(i,:), algo_pose_y(i,:),algo_pose_z(i,:),1]'; %对齐algo输出的第i个pose
+i=min(1400, clum); %防止越界
+a= transition_matrix * [algo_pose_x(i,:), algo_pose_y(i,:),algo_pose_z(i,:),1]'; %对齐algo输出的第i个pose
 b= [ref_pose_x(i,:), ref_pose_y(i,:), ref_pose_z(i,:)]';%ground-truth的第i个pose
-a-b %看下二者的差距。
+diff=a-b %看下二者的差距。
+
+
 
 
 
