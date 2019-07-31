@@ -10,7 +10,7 @@ tm="vicon_room_1_02"
 # tm="vicon_room_2_03"
 
 
-dir="vio6"
+dir="vio1"
 
 script="../euroc.py"
 opt="-v"
@@ -19,23 +19,42 @@ gt="/Users/songyang/Downloads/datasets/EuRoC_ASL/"${gt_ds}"/state_groundtruth_es
 mkdir ${dir}
 cd ${dir}
 
-input="vio_6-1.csv"
-output="align_vio_6-1.csv"
+input="vio_1.csv"
+output="align_vio_1.csv"
 python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+echo "******<"${output}">*******"
+python3 ${script} "-r" "/Users/songyang/project/code/github/vio-evaluate/"${dir}/${output}
+echo "**************************"
 
-# input="vio_4-2.csv"
-# output="align_vio_4-2.csv"
-# python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
 
-# input="vio_4-3.csv"
-# output="align_vio_4-3.csv"
-# python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+input="vio_2.csv"
+output="align_vio_2.csv"
+python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+echo "******<"${output}">*******"
+python3 ${script} "-r" "/Users/songyang/project/code/github/vio-evaluate/"${dir}/${output}
+echo "**************************"
 
-# input="vio_4-4.csv"
-# output="align_vio_4-4.csv"
-# python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
 
-# input="vio_4-5.csv"
-# output="align_vio_4-5.csv"
-# python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+input="vio_3.csv"
+output="align_vio_3.csv"
+python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+echo "******<"${output}">*******"
+python3 ${script} "-r" "/Users/songyang/project/code/github/vio-evaluate/"${dir}/${output}
+echo "**************************"
+
+
+input="vio_4.csv"
+output="align_vio_4.csv"
+python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+echo "******<"${output}">*******"
+python3 ${script} "-r" "/Users/songyang/project/code/github/vio-evaluate/"${dir}/${output}
+echo "**************************"
+
+
+input="vio_5.csv"
+output="align_vio_5.csv"
+python3 ${script} ${opt} ${output} ${gt}  "/Users/songyang/project/code/ros/catkin_ws/test/"${input}  ${tm} 
+echo "******<"${output}">*******"
+python3 ${script} "-r" "/Users/songyang/project/code/github/vio-evaluate/"${dir}/${output}
+echo "**************************"
 
