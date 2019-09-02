@@ -9,6 +9,7 @@
 gt_ds="V2_03_difficult_mav0"
 tm="vicon_room_2_03"
 
+echo "dataset:"${gt_ds}
 
 dir="vio1"
 
