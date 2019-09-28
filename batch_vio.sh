@@ -3,12 +3,13 @@
 # gt_ds="MH_02_easy_mav0"
 # tm="machine_hall_02"
 
-gt_ds="V1_02_medium_mav0"
-tm="vicon_room_1_02"
+# gt_ds="V1_02_medium_mav0"
+# tm="vicon_room_1_02"
 
-# gt_ds="V2_03_difficult_mav0"
-# tm="vicon_room_2_03"
+gt_ds="V2_03_difficult_mav0"
+tm="vicon_room_2_03"
 
+echo "dataset:"${gt_ds}
 
 dir="vio1"
 

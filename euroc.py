@@ -82,12 +82,6 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         if not b_align:
                             b_align = True
                             first_timestamp = timestamp
-                            # d_x = gt_x - algo_x
-                            # d_y = gt_y - algo_y
-                            # d_z = gt_z - algo_z
-                            d_roll = gt_roll - algo_roll
-                            d_pitch = gt_pitch - algo_pitch
-                            d_yaw = gt_yaw - algo_yaw
 
                         algo_pose = np.array([algo_x,algo_y,algo_z,1]).T
                         align_pose = np.matmul(tm, algo_pose)
@@ -95,28 +89,20 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         align_y = align_pose[1]
                         align_z = align_pose[2]
 
-                        if 0:
-                            align_roll = algo_roll + d_roll
-                            align_pitch = algo_pitch + d_pitch
-                            align_yaw = algo_yaw + d_yaw
-                        else :
-                            #欧拉角对齐的方式不对。
-                            # algo_euler = np.array([algo_yaw,algo_pitch,algo_roll,1]).T
-                            # align_euler = np.matmul(tm, algo_euler)
-                            algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
-                            algo_dcm = attitude.euler2dcm(algo_euler)
-                            align_dcm = np.matmul(dcm, algo_dcm)
-                            align_euler = attitude.dcm2euler(align_dcm)*r2d
-                            align_yaw = align_euler[0]
-                            align_pitch = align_euler[1]
-                            align_roll = align_euler[2]
-
+                        algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
+                        algo_dcm = attitude.euler2dcm(algo_euler)
+                        align_dcm = np.matmul(dcm, algo_dcm)
+                        align_euler = attitude.dcm2euler(align_dcm)*r2d
+                        align_yaw = align_euler[0]
+                        align_pitch = align_euler[1]
+                        align_roll = align_euler[2]
 
                         str = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},\n'.format(\
                             timestamp, gt_x, gt_y, gt_z, gt_roll, gt_pitch, gt_yaw,  \
                             algo_x, algo_y, algo_z, algo_roll, algo_pitch, algo_yaw,\
                             align_x, align_y, align_z, align_roll, align_pitch, align_yaw)
                         output_file.write(str)
+                        output_file.flush()
                         break
     output_file.close()
     first_timestamp = float(first_timestamp)
@@ -203,25 +189,12 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
                     algo_qz = float(path[i*num + 8])
                     algo_qw = float(path[i*num + 9])
 
-                    (gt_roll, gt_pitch, gt_yaw) = cal_attitude(gt_qw, gt_qx, gt_qy, gt_qz)
-                    gt_roll = gt_roll*r2d
-                    gt_pitch = gt_pitch*r2d
-                    gt_yaw = gt_yaw*r2d
-
-                    (algo_roll, algo_pitch, algo_yaw) = cal_attitude(algo_qw, algo_qx, algo_qy, algo_qz)
-                    algo_roll = algo_roll*r2d
-                    algo_pitch = algo_pitch*r2d
-                    algo_yaw = algo_yaw*r2d
+                    (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*r2d
+                    (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*r2d
 
                     if not b_align:
                         b_align = True
                         first_timestamp = timestamp
-                        # d_x = gt_x - algo_x
-                        # d_y = gt_y - algo_y
-                        # d_z = gt_z - algo_z
-                        d_roll = gt_roll - algo_roll
-                        d_pitch = gt_pitch - algo_pitch
-                        d_yaw = gt_yaw - algo_yaw
 
                     algo_pose = np.array([algo_x,algo_y,algo_z,1]).T
                     align_pose = np.matmul(tm, algo_pose)
@@ -229,9 +202,13 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
                     align_y = align_pose[1]
                     align_z = align_pose[2]
 
-                    align_roll = algo_roll + d_roll
-                    align_pitch = algo_pitch + d_pitch
-                    align_yaw = algo_yaw + d_yaw
+                    algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
+                    algo_dcm = attitude.euler2dcm(algo_euler)
+                    align_dcm = np.matmul(dcm, algo_dcm)
+                    align_euler = attitude.dcm2euler(align_dcm)*r2d
+                    align_yaw = align_euler[0]
+                    align_pitch = align_euler[1]
+                    align_roll = align_euler[2]
 
                     str = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},\n'.format(\
                         timestamp, gt_x, gt_y, gt_z, gt_roll, gt_pitch, gt_yaw,  \

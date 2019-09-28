@@ -10,11 +10,19 @@
             "request": "launch",
             "program": "${file}",
             "console": "integratedTerminal",
+            "args": [
+                "-v", "align_vio_1.csv",
+                "/Users/songyang/Downloads/datasets/EuRoC_ASL/V1_02_medium_mav0/state_groundtruth_estimate0/data.csv",
+                "/Users/songyang/project/code/ros/catkin_ws/test/vio_1.csv", "vicon_room_1_02"
+            ]
+
             // "args": [
-            //     "-v", "align_vio_2.csv",
-            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V1_02_medium_mav0/state_groundtruth_estimate0/data.csv",
-            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_2.csv", "vicon_room_1_02"
+            //     "-v", "align_vio_5.csv",
+            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/MH_02_easy_mav0/state_groundtruth_estimate0/data.csv",
+            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_5.csv", "machine_hall_02"
             // ]
+
+            // MH_02_easy_mav0 machine_hall_02;  V1_02_medium_mav0  vicon_room_1_02   V2_03_difficult_mav0  vicon_room_2_03
 
             // "args": [
             //     "-v", "align_vio_4.csv",
@@ -22,72 +30,9 @@
             //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_4.csv", "vicon_room_2_03"
             // ]
 
-            // MH_02_easy_mav0 machine_hall_02;  V1_02_medium_mav0  vicon_room_1_02   V2_03_difficult_mav0  vicon_room_2_03
-
             // "args": [
-            //     "-l", "align_loop_4.csv",
-            //     "/Users/songyang/Downloads/datasets/EuRoC_ASL/V2_03_difficult_mav0/state_groundtruth_estimate0/data.csv",
-            //     "/Users/songyang/project/code/ros/catkin_ws/test/vio_loop_4.csv", "vicon_room_2_03"
+            //     "-r", "/Users/songyang/project/code/github/vio-evaluate/align_vio_1.csv"
             // ]
-
-            "args": [
-                "-r", "/Users/songyang/project/code/github/vio-evaluate/align_vio_3.csv"
-            ]
-        },
-        {
-            "name": "Python: Remote Attach",
-            "type": "python",
-            "request": "attach",
-            "port": 5678,
-            "host": "localhost",
-            "pathMappings": [
-                {
-                    "localRoot": "${workspaceFolder}",
-                    "remoteRoot": "."
-                }
-            ]
-        },
-        {
-            "name": "Python: Module",
-            "type": "python",
-            "request": "launch",
-            "module": "enter-your-module-name-here",
-            "console": "integratedTerminal"
-        },
-        {
-            "name": "Python: Django",
-            "type": "python",
-            "request": "launch",
-            "program": "${workspaceFolder}/manage.py",
-            "console": "integratedTerminal",
-            "args": [
-                "runserver",
-                "--noreload",
-                "--nothreading"
-            ],
-            "django": true
-        },
-        {
-            "name": "Python: Flask",
-            "type": "python",
-            "request": "launch",
-            "module": "flask",
-            "env": {
-                "FLASK_APP": "app.py"
-            },
-            "args": [
-                "run",
-                "--no-debugger",
-                "--no-reload"
-            ],
-            "jinja": true
-        },
-        {
-            "name": "Python: Current File (External Terminal)",
-            "type": "python",
-            "request": "launch",
-            "program": "${file}",
-            "console": "externalTerminal"
         }
     ]
 }

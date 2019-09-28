@@ -3,6 +3,8 @@
 % 如下，A为algo输出的pose,B为ground-truth, X为转换矩阵
 % XA=B => X=B*A'*inv(AA')
 
+% 注意：用最小二乘法求解T或R是不准确的，还应该加上R的约束条件，如行列式=1，正交矩阵。
+
 clc;clear;close all;
 
 [FileName, PathName]= uigetfile('*.csv','Please Selet the data file');

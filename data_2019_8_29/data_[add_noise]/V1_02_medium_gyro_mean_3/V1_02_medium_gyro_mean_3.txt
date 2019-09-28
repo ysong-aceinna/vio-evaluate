@@ -1,0 +1,147 @@
+admin:vio-evaluate songyang$ ./batch_vio.sh 
+start:2019/09/02 14:25:42
+../euroc.py:31: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608462 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608562 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608662 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608762 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608862 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715608962 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715609062 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715609162 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715609262 in ground-truth.
+[2019_09_02_14_26_09]:can not find same timestamp 1403715609362 in ground-truth.
+time length:80.100s
+Time cost:26.97s
+end:2019/09/02 14:26:09
+******<align_vio_1.csv>*******
+start:2019/09/02 14:26:09
+rmse_pose_x:0.07077863319459111
+rmse_pose_y:0.13128341471329547
+rmse_pose_z:0.16847107655998847
+rmse_pose:0.2250054522294051
+rmse_roll:171.49950441349492
+rmse_pitch:86.4603211245852
+rmse_yaw:120.5482613837514
+rmse_attitude:226.75835258196335
+Time cost:0.01s
+end:2019/09/02 14:26:09
+**************************
+start:2019/09/02 14:26:10
+../euroc.py:31: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608462 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608562 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608662 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608762 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608862 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715608962 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715609062 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715609162 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715609262 in ground-truth.
+[2019_09_02_14_26_37]:can not find same timestamp 1403715609362 in ground-truth.
+time length:80.100s
+Time cost:27.62s
+end:2019/09/02 14:26:37
+******<align_vio_2.csv>*******
+start:2019/09/02 14:26:38
+rmse_pose_x:0.08760772732355039
+rmse_pose_y:0.03219426105374598
+rmse_pose_z:0.14974350593303387
+rmse_pose:0.1764502816679839
+rmse_roll:171.54634314649957
+rmse_pitch:86.39797798930373
+rmse_yaw:119.46833101451223
+rmse_attitude:226.1977908003742
+Time cost:0.01s
+end:2019/09/02 14:26:38
+**************************
+start:2019/09/02 14:26:38
+../euroc.py:31: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608462 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608562 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608662 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608762 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608862 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715608962 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715609062 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715609162 in ground-truth.
+[2019_09_02_14_27_06]:can not find same timestamp 1403715609262 in ground-truth.
+[2019_09_02_14_27_07]:can not find same timestamp 1403715609362 in ground-truth.
+time length:80.100s
+Time cost:28.72s
+end:2019/09/02 14:27:07
+******<align_vio_3.csv>*******
+start:2019/09/02 14:27:07
+rmse_pose_x:0.07467119244043512
+rmse_pose_y:0.13708126457161565
+rmse_pose_z:0.14308364402177495
+rmse_pose:0.21175454956996742
+rmse_roll:171.48692107712756
+rmse_pitch:86.58110040156096
+rmse_yaw:120.55492443871981
+rmse_attitude:226.79845866690454
+Time cost:0.01s
+end:2019/09/02 14:27:07
+**************************
+start:2019/09/02 14:27:07
+../euroc.py:31: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608462 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608562 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608662 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608762 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608862 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715608962 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715609062 in ground-truth.
+[2019_09_02_14_27_33]:can not find same timestamp 1403715609162 in ground-truth.
+[2019_09_02_14_27_34]:can not find same timestamp 1403715609262 in ground-truth.
+[2019_09_02_14_27_34]:can not find same timestamp 1403715609362 in ground-truth.
+time length:80.100s
+Time cost:26.62s
+end:2019/09/02 14:27:34
+******<align_vio_4.csv>*******
+start:2019/09/02 14:27:34
+rmse_pose_x:0.08002581411771474
+rmse_pose_y:0.14048134395152573
+rmse_pose_z:0.14112391694584148
+rmse_pose:0.21460451732842592
+rmse_roll:171.47655069570806
+rmse_pitch:86.61803528864776
+rmse_yaw:120.54675673873935
+rmse_attitude:226.80037926774276
+Time cost:0.01s
+end:2019/09/02 14:27:34
+**************************
+start:2019/09/02 14:27:34
+../euroc.py:31: YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated, as the default Loader is unsafe. Please read https://msg.pyyaml.org/load for full details.
+  cfg = yaml.load(open('/Users/songyang/project/code/github/vio-evaluate/euroc.yaml'))
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608462 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608562 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608662 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608762 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608862 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715608962 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715609062 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715609162 in ground-truth.
+[2019_09_02_14_27_58]:can not find same timestamp 1403715609262 in ground-truth.
+[2019_09_02_14_27_59]:can not find same timestamp 1403715609362 in ground-truth.
+time length:80.100s
+Time cost:24.50s
+end:2019/09/02 14:27:59
+******<align_vio_5.csv>*******
+start:2019/09/02 14:27:59
+rmse_pose_x:0.08383558050431715
+rmse_pose_y:0.1522939830531361
+rmse_pose_z:0.1480839269689344
+rmse_pose:0.22836530222261317
+rmse_roll:171.47282017890697
+rmse_pitch:86.62783798545122
+rmse_yaw:120.54664237876909
+rmse_attitude:226.80124197838117
+Time cost:0.02s
+end:2019/09/02 14:27:59
+**************************
+admin:vio-evaluate songyang$ 
