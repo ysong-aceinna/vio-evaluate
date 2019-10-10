@@ -21,7 +21,7 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
         align_roll,align_pitch,align_yaw\n")
 
     cur_line = 1
-    r2d = 180/math.pi
+    R2D = 180/math.pi
     d_x = d_y = d_z = 0
     d_yaw = d_pitch = d_roll = 0
     b_align = False
@@ -76,8 +76,8 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         algo_qz = float(item[10])
                         algo_qw = float(item[11])
 
-                        (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*r2d
-                        (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*r2d
+                        (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*R2D
+                        (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*R2D
 
                         if not b_align:
                             b_align = True
@@ -89,10 +89,10 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         align_y = align_pose[1]
                         align_z = align_pose[2]
 
-                        algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
+                        algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/R2D
                         algo_dcm = attitude.euler2dcm(algo_euler)
                         align_dcm = np.matmul(dcm, algo_dcm)
-                        align_euler = attitude.dcm2euler(align_dcm)*r2d
+                        align_euler = attitude.dcm2euler(align_dcm)*R2D
                         align_yaw = align_euler[0]
                         align_pitch = align_euler[1]
                         align_roll = align_euler[2]
@@ -122,7 +122,7 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
         align_roll,align_pitch,align_yaw\n")
 
     cur_line = 1
-    r2d = 180/math.pi
+    R2D = 180/math.pi
     d_x = d_y = d_z = 0
     d_yaw = d_pitch = d_roll = 0
     b_align = False
@@ -189,8 +189,8 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
                     algo_qz = float(path[i*num + 8])
                     algo_qw = float(path[i*num + 9])
 
-                    (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*r2d
-                    (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*r2d
+                    (gt_yaw, gt_pitch, gt_roll) = attitude.quat2euler(np.array([gt_qw, gt_qx, gt_qy, gt_qz]))*R2D
+                    (algo_yaw, algo_pitch, algo_roll) = attitude.quat2euler(np.array([algo_qw, algo_qx, algo_qy, algo_qz]))*R2D
 
                     if not b_align:
                         b_align = True
@@ -202,10 +202,10 @@ def save_aligned_data_loop(output_align_file, ground_truth_file, algo_loop_file,
                     align_y = align_pose[1]
                     align_z = align_pose[2]
 
-                    algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/r2d
+                    algo_euler = np.array([algo_yaw,algo_pitch,algo_roll]).T/R2D
                     algo_dcm = attitude.euler2dcm(algo_euler)
                     align_dcm = np.matmul(dcm, algo_dcm)
-                    align_euler = attitude.dcm2euler(align_dcm)*r2d
+                    align_euler = attitude.dcm2euler(align_dcm)*R2D
                     align_yaw = align_euler[0]
                     align_pitch = align_euler[1]
                     align_roll = align_euler[2]
