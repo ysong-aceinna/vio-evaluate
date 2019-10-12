@@ -35,8 +35,8 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
     output_file.write("time,\
         ins1000_lat, ins1000_lon, ins1000_alt, ins1000_roll, ins1000_pitch, ins1000_yaw, \
         ins1000_ned_x, ins1000_ned_y, ins1000_ned_z, \
-        algo_pose_x, algo_pose_y, algo_pose_z, algo_roll, algo_pitch,algo_yaw,\
-        align_pose_x, align_pose_y, align_pose_z, align_roll,align_pitch, align_yaw,\
+        algo_pose_x, algo_pose_y, algo_pose_z, algo_roll, algo_pitch,algo_yaw, algo_vel_x, algo_vel_y, algo_vel_z,\
+        align_pose_x, align_pose_y, align_pose_z, align_roll,align_pitch, align_yaw, align_vel_x, align_vel_y, align_vel_z,\
         algo_lat, algo_lon, algo_alt \n".replace(" ", ""))
 
     cur_line = 1
@@ -78,6 +78,9 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         gt_lat = float(_item[2])/R2D
                         gt_lon = float(_item[3])/R2D
                         gt_alt = float(_item[4])
+                        gt_v_x = float(_item[5]) #都转换为body系下的表示的速度,主要是沿行驶方向上的速度.
+                        gt_v_y = float(_item[6])
+                        gt_v_z = float(_item[7])
                         gt_qw = float(_item[8])
                         gt_qx = float(_item[9])
                         gt_qy = float(_item[10])
@@ -86,6 +89,9 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         algo_x = float(item[5])
                         algo_y = float(item[6])
                         algo_z = float(item[7])
+                        algo_v_x = float(item[48]) #都转换为body系下的表示的速度,主要是沿行驶方向上的速度.
+                        algo_v_y = float(item[49])
+                        algo_v_z = float(item[50])
                         algo_qx = float(item[8])
                         algo_qy = float(item[9])
                         algo_qz = float(item[10])
@@ -105,6 +111,7 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                             # 要将ins1000的body系转到vins下的body系。此处是围绕x轴转180°.
                             c_ib_vb = attitude.rot_x(math.pi)
                             # ins1000在VINS导航系下的姿态矩阵c_bv，注意此时还没有yaw对齐
+                            c_bv1 = c_bn.dot(c_vn.T)
                             c_bv = c_ib_vb.dot(c_bn.dot(c_vn.T))
                             ins1000_euler = attitude.dcm2euler(c_bv)
                             # ins1000在VINS导航系下的姿态矩阵c_bv，注意此时还没有yaw对齐
@@ -121,19 +128,25 @@ def save_aligned_data_vins(output_align_file, ground_truth_file, algo_result_fil
                         ins1000_pos_ned = c_ne.dot(ins1000_pos_ecef[-1] - ins1000_pos_ecef[0])
                         ins1000_pos_v = c_vn.dot(ins1000_pos_ned) + t_vn
                         ins1000_rpy_v = attitude.dcm2euler(c_ib_vb.dot(attitude.euler2dcm(np.array([gt_yaw, gt_pitch, gt_roll])).dot(c_vn.T)))
-                        
+                        # ins1000_vel_v = c_bv.dot(c_vn.dot((np.array([gt_v_x, gt_v_y, gt_v_z]))))
+                        # ins1000_vel_v = c_ib_vb.dot(attitude.euler2dcm(np.array([gt_yaw, gt_pitch, gt_roll])).dot(c_vn.T.dot(np.array([gt_v_x, gt_v_y, gt_v_z]))))
+                        # ins1000_vel_v = c_bv1.dot(c_vn.dot(np.array([gt_v_x, gt_v_y, gt_v_z])))
+
+                        ins1000_vel_v = attitude.rot_x(math.pi).dot(attitude.euler2dcm(np.array([gt_yaw, gt_pitch, gt_roll])).dot(np.array([gt_v_x, gt_v_y, gt_v_z])))
+
                         # print("{0:0.3f},{1},{2},{3}".format(timestamp,ins1000_pos_ned[0],ins1000_pos_ned[1],ins1000_pos_ned[2]))
                         # print("{0},{1},{2}".format(ins1000_pos_ned[0],ins1000_pos_ned[1],ins1000_pos_ned[2]))
                         
                         algo_ecef = c_ev.dot((np.array([algo_x, algo_y, algo_z]) - t_vn)) + ins1000_pos_ecef[0]
                         algo_lla = geoparams.ecef2lla(algo_ecef)
+                        algo_vel = attitude.euler2dcm(np.array([algo_yaw, algo_pitch, algo_roll])).dot(np.array([algo_v_x, algo_v_y, algo_v_z]))
 
-                        str1 = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24}\n'.format(str(timestamp),\
+                        str1 = '{0},{1},{2},{3},{4},{5},{6},{7},{8},{9},{10},{11},{12},{13},{14},{15},{16},{17},{18},{19},{20},{21},{22},{23},{24},{25},{26},{27},{28},{29},{30}\n'.format(str(timestamp),\
                             gt_lat*R2D, gt_lon*R2D, gt_alt*R2D, gt_roll*R2D, gt_pitch*R2D, gt_yaw*R2D, \
                             ins1000_pos_ned[0], ins1000_pos_ned[1], ins1000_pos_ned[2], \
-                            algo_x, algo_y, algo_z, algo_roll*R2D, algo_pitch*R2D, algo_yaw*R2D, \
+                            algo_x, algo_y, algo_z, algo_roll*R2D, algo_pitch*R2D, algo_yaw*R2D, algo_vel[0], algo_vel[1], algo_vel[2], \
                             ins1000_pos_v[0], ins1000_pos_v[1], ins1000_pos_v[2], ins1000_rpy_v[2]*R2D, ins1000_rpy_v[1]*R2D, ins1000_rpy_v[0]*R2D, \
-                            algo_lla[0]*R2D, algo_lla[1]*R2D, algo_lla[2])
+                            ins1000_vel_v[0], ins1000_vel_v[1], ins1000_vel_v[2], algo_lla[0]*R2D, algo_lla[1]*R2D, algo_lla[2])
 
                         output_file.write(str1)
                         break
@@ -145,6 +158,9 @@ def eval_rmse(align_file):
     algo_x_list = []
     algo_y_list = []
     algo_z_list = []
+    algo_vel_x_list = []
+    algo_vel_y_list = []
+    algo_vel_z_list = []
     algo_roll_list= []
     algo_pitch_list= []
     algo_yaw_list = []
@@ -152,6 +168,9 @@ def eval_rmse(align_file):
     align_x_list= []
     align_y_list= []
     align_z_list = []
+    align_vel_x_list= []
+    align_vel_y_list= []
+    align_vel_z_list = []
     align_roll_list= []
     align_pitch_list= []
     align_yaw_list = []  
@@ -168,23 +187,35 @@ def eval_rmse(align_file):
             algo_roll_list.append(float(item[13]))
             algo_pitch_list.append(float(item[14]))
             algo_yaw_list.append(float(item[15]))
+            algo_vel_x_list.append(float(item[16]))
+            algo_vel_y_list.append(float(item[17]))
+            algo_vel_z_list.append(float(item[18]))
 
-            align_x_list.append(float(item[16]))
-            align_y_list.append(float(item[17]))
-            align_z_list.append(float(item[18]))
-            align_roll_list.append(float(item[22])) #注意：使用手动减去offset后的yaw pitch roll.
-            align_pitch_list.append(float(item[23]))
-            align_yaw_list.append(float(item[24]))
+            align_x_list.append(float(item[19]))
+            align_y_list.append(float(item[20]))
+            align_z_list.append(float(item[21]))
+            align_vel_x_list.append(float(item[28]))
+            align_vel_y_list.append(float(item[29]))
+            align_vel_z_list.append(float(item[30]))
+            align_roll_list.append(float(item[25])) #注意：使用手动减去offset后的yaw pitch roll.
+            align_pitch_list.append(float(item[26]))
+            align_yaw_list.append(float(item[27]))
 
     algo_x_list = np.array(algo_x_list)
     algo_y_list = np.array(algo_y_list)
     algo_z_list = np.array(algo_z_list)
+    algo_vel_x_list = np.array(algo_vel_x_list)
+    algo_vel_y_list = np.array(algo_vel_y_list)
+    algo_vel_z_list = np.array(algo_vel_z_list)
     algo_roll_list = np.array(algo_roll_list)
     algo_pitch_list = np.array(algo_pitch_list)
     algo_yaw_list = np.array(algo_yaw_list)
     align_x_list = np.array(align_x_list)
     align_y_list = np.array(align_y_list)
     align_z_list = np.array(align_z_list)
+    align_vel_x_list = np.array(align_vel_x_list)
+    align_vel_y_list = np.array(align_vel_y_list)
+    align_vel_z_list = np.array(align_vel_z_list)
     align_roll_list = np.array(align_roll_list)
     align_pitch_list = np.array(align_pitch_list)
     align_yaw_list = np.array(align_yaw_list)
@@ -192,17 +223,26 @@ def eval_rmse(align_file):
     rmse_x = cal_rmse(algo_x_list, align_x_list)
     rmse_y = cal_rmse(algo_y_list, align_y_list)
     rmse_z = cal_rmse(algo_z_list, align_z_list)
+    rmse_vel_x = cal_rmse(algo_vel_x_list, align_vel_x_list)
+    rmse_vel_y = cal_rmse(algo_vel_y_list, align_vel_y_list)
+    rmse_vel_z = cal_rmse(algo_vel_z_list, align_vel_z_list)
     rmse_roll = cal_rmse(algo_roll_list, align_roll_list)
     rmse_pitch = cal_rmse(algo_pitch_list, align_pitch_list)
     rmse_yaw = cal_rmse(algo_yaw_list, align_yaw_list, True)
 
     rmse_pose = math.sqrt(rmse_x*rmse_x + rmse_y*rmse_y + rmse_z*rmse_z)
+    rmse_vel = math.sqrt(rmse_vel_x*rmse_vel_x + rmse_vel_y*rmse_vel_y + rmse_vel_z*rmse_vel_z)
     rmse_attitude = math.sqrt(rmse_roll*rmse_roll + rmse_pitch*rmse_pitch + rmse_yaw*rmse_yaw)
 
     print("rmse_pose_x:{0}".format(rmse_x))
     print("rmse_pose_y:{0}".format(rmse_y))
     print("rmse_pose_z:{0}".format(rmse_z))
     print("rmse_pose:{0}".format(rmse_pose))
+
+    print("rmse_vel_x:{0}".format(rmse_vel_x))
+    print("rmse_vel_y:{0}".format(rmse_vel_y))
+    print("rmse_vel_z:{0}".format(rmse_vel_z))
+    print("rmse_vel:{0}".format(rmse_vel))
 
     print("rmse_roll:{0}".format(rmse_roll))
     print("rmse_pitch:{0}".format(rmse_pitch))
@@ -320,20 +360,19 @@ if __name__=="__main__":
     # main(sys.argv[1:])
 
     # dataset = 'vio_1_[2019-10-8]'
-    # ground_truth_file = 'ins1000/CNM-20191008_152547.csv'
-    # algo_result_file = 'algo/vio_1_[2019-10-8].csv'
-    # delta_yaw = -0.097
+    ground_truth_file = 'ins1000/CNM-20191008_152547.csv'
+    algo_result_file = './data_2019_10_8/algo/vio_1_[2019-10-8].csv'
+    delta_yaw = -0.097
 
     # ground_truth_file = 'ins1000/CNM-20191008_154144.csv'
-    # algo_result_file = 'algo/vio_2_[2019-10-8].csv'
+    # algo_result_file = './data_2019_10_8/algo/vio_2_[2019-10-8].csv'
     # delta_yaw = -0.07
 
-    align_flie = 'align_vio_2_[2019-10-8].csv'
-    # 先用prepare_data只做时间对齐，matlab分析align.csv得到转换矩阵后，再用save_aligned_data_vins做数据对齐。
-    # prepare_data('align.csv', ground_truth_file, algo_result_file)
-    # save_aligned_data_vins(align_flie, ground_truth_file, algo_result_file, delta_yaw)
+    align_flie = './data_2019_10_8/align_vio_1_[2019-10-8].csv'
+    # align_flie = 'align.csv'
+    save_aligned_data_vins(align_flie, ground_truth_file, algo_result_file, delta_yaw)
     
-    eval_rmse(align_flie)
+    # eval_rmse(align_flie)
 
     time_end=time.time()
     print('Time cost:{0:0.2f}s'.format(time_end-time_start))
